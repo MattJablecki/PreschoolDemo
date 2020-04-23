@@ -1,0 +1,56 @@
+﻿@model PreschoolDemo.ViewModels.NapIndex
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Nap Chart: @Html.DisplayFor(m => m.ChildName)</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Naps) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeacherName)
+            </td>
+            <td>
+                @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.Date))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                <a class="btn btn-danger delete text-white" data-id="@item.Id" data-controller="Naps" data-action="Delete"
+                   data-body-message="Are you sure you want to Delete this Nap Record?">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Children" asp-action="Index">Back to Children Index</a>

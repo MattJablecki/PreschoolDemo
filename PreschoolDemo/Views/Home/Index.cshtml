@@ -1,0 +1,30 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Preschool Activity Tracker</h1>
+</div>
+<div class="row">
+    <div class="card mb-3">
+        <img src="~/Photos/preschool.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Our Objectives</h5>
+            <p class="card-text">
+                This is the Preschool Activity Tracker. Throughout a normal school day, children are constantly being attended
+                to for a variety of reasons. Parents and educators alike need to monitor these activites closely to better track
+                goals, milestones, and basic needs. This app serves as a tool to accurately and easily collect data pertinent to
+                the daily necessities of each child. Features include:
+                <ul>
+                    <li>Nap Tracker: See when your child took a nap and for how long.</li>
+                    <li>Meal Tracker: See when and what your child ate today.</li>
+                    <li>Diaper Tracker: See when your child had their diaper changed and whether it was "number one or number two.'</li>
+                    <li>Daily Report: All of the data points for that day, updated in real time.</li>
+                </ul>
+                Each activity is assigned to a Teacher and given a space for notes, to increase accountability and give parents
+                greater insight into what their child is experiencing on a daily basis. Click the start button to test it out!
+            </p>
+            <a class="btn btn-success" asp-controller="Children" asp-action="Index">Start</a>
+        </div>
+    </div>
+</div>

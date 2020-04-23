@@ -1,0 +1,148 @@
+﻿@model PreschoolDemo.ViewModels.DailyReport
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Daily Report for: @Model.ChildName</h3>
+<h4>@Model.DateTime</h4>
+
+<h4 class="mt-3 mb-2">Diapers</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Diapers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4 class="mt-3 mb-2">Meals/Snacks</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Contents
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Meals)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Contents)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4 class="mt-3 mb-2">Naps</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Start Time
+            </th>
+            <th>
+                End Time
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Naps)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EndTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Children" asp-action="Index">Back to Children Index</a>
+

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<PreschoolDemo.Models.Child>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<!-- Team -->
+<section id="team" class="pb-5">
+    <div class="container">
+        <h5 class="section-title h1">OUR KIDS</h5>
+        <div class="row">
+            <!-- Team member -->
+            @foreach (var item in Model)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+                        <div class="mainflip">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><img class=" img-fluid" src="~/Photos/@Html.DisplayFor(modelItem => item.PhotoPath)" alt="card image"></p>
+                                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">@Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)</h4>
+                                        <h5 class="mb-2">Add a New Record</h5>
+                                        <a class="btn-sm btn-success" asp-controller="Naps" asp-action="Create" asp-route-id="@item.Id">Nap Time</a>
+                                        <a class="btn-sm btn-success" asp-controller="Meals" asp-action="Create" asp-route-id="@item.Id">Meal/Snack</a>
+                                        <a class="btn-sm btn-success" asp-controller="Diapers" asp-action="Create" asp-route-id="@item.Id">Diaper</a>
+                                        <h5 class="mt-2 mb-2">View Chart</h5>
+                                        <a class="btn-sm btn-primary" asp-controller="Naps" asp-action="Index" asp-route-id="@item.Id">Naps</a>
+                                        <a class="btn-sm btn-primary" asp-controller="Meals" asp-action="Index" asp-route-id="@item.Id">Meals/Snacks</a>
+                                        <a class="btn-sm btn-primary" asp-controller="Diapers" asp-action="Index" asp-route-id="@item.Id">Diapers</a>
+                                        <h5 class="mt-2 mb-2">Admin</h5>
+                                        <a class="btn-sm btn-primary" asp-controller="Report" asp-action="Index" asp-route-id="@item.Id">Daily Report</a>
+                                        <a class="btn-sm btn-danger delete text-white" style="cursor:pointer;" data-id="@item.Id" data-controller="Children" data-action="Delete"
+                                         data-body-message="Are you sure you want to Delete @Html.DisplayFor(modelItem => item.FirstName)?">Delete</a>                                       
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- ./Team member -->
+        </div>
+        <a class="btn btn-success float-right" asp-action="Create">Add New Child</a>
+    </div>
+</section>
+<!-- Team -->

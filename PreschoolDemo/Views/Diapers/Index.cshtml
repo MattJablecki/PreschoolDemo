@@ -1,0 +1,58 @@
+﻿@model PreschoolDemo.ViewModels.DiaperIndex
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Diaper Chart: @Html.DisplayFor(m => m.ChildName)</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Teacher
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Notes
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Diapers)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeacherName)
+                </td>
+                <td>
+                    @Convert.ToString(string.Format("{0:MM/dd/yyyy}", item.Date))
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    <a class="btn btn-danger delete text-white" data-id="@item.Id" data-controller="Diapers" data-action="Delete"
+                       data-body-message="Are you sure you want to Delete this Diaper Record?">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-primary" asp-area="" asp-controller="Children" asp-action="Index">Back to Children Index</a>
